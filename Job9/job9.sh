@@ -14,13 +14,16 @@ use[$h]=${infos[2]}"-"${infos[3]}
 echo ${use[$h]}
 a=${infos[5]}
 case $a in 
-Admin*)
-sudo useradd -m -u ${infos[1]} -p ${infos[4]} --gid root ${use[$h]}
-echo "root"
+Sudo*)
+sudo useradd -m ${infos[2]} -p ${infos[4]}
+sudo usermod -aG sudo ${infos[1]}
+sudo adduser ${infos[2]} ftp
+echo "sudo ok"
 ;;
 *)
-sudo useradd -m -u ${infos[1]} -p ${infos[4]} ${use[$h]}
-echo "user"
+sudo useradd -m ${infos[2]} -p ${infos[4]}
+sudo adduser ${infos[2]} ftp
+echo "user ok"
 ;;
 esac
 done
